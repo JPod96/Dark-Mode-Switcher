@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --off-bg-: #d9d9d9;
+  --on-bg-: #14172a;
+  --off-text-: #000;
+  --on-text-: #c3ff00f2;
+  --off-ball-: #6c6c6c;
+  --on-ball-: #000;
+}
+
+body {
+  background-color: var(--off-bg-);
+  color: var(--off-text-);
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  max-width: 100%;
+  width: 600px;
+  margin: 10px auto;
+}
+
+.t-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+}
+
+.t-container h5 {
+  font-size: 14px;
+  letter-spacing: 1.6px;
+  color: var(--off-text-);
+}
+.container.active .t-container h5 {
+  color: var(--on-text-);
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  margin: 10px 0;
+  width: 150px;
+}
+
+.OnOff {
+  visibility: hidden;
+}
+
+.label {
+  background-color: #d0d0d0;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 15px 0;
+  width: 80px;
+  height: 40px;
+  position: relative;
+}
+
+.OnOff:checked + .label {
+  background-color: #fcff60;
+}
+
+.ball {
+  background: var(--off-ball-);
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  align-items: center;
+  justify-content: center;
+  animation: slideOff 0.3s linear forwards;
+}
+.container.active .ball {
+  background: var(--on-ball-);
+}
+
+.OnOff:checked + .label .ball {
+  animation: slideOn 0.3s linear forwards;
+}
+
+@keyframes slideOn {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  50% {
+    transform: translateX(20px) scale(1.1);
+  }
+  100% {
+    transform: translateX(40px) scale(1);
+  }
+}
+
+@keyframes slideOff {
+  0% {
+    transform: translateX(40px) scale(1);
+  }
+  50% {
+    transform: translateX(20px) scale(1.1);
+  }
+  100% {
+    transform: translateX(0px) scale(1);
+  }
+}
+
+.text-container {
+  border: 2px solid var(--off-text-);
+  color: var(--off-text-);
+  border-radius: 20px;
+  padding: 10px 30px;
+}
+
+.container.active .text-container {
+  border: 2px solid var(--on-text-);
+  color: var(--on-text-);
+}
+.text-container h1 {
+  font-size: 40px;
+  letter-spacing: 2px;
+}
+.text-container p {
+  font-size: 20px;
+  line-height: 1.3;
+}
